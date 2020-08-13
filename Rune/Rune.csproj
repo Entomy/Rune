@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+		<TargetFrameworks>netstandard1.3;netcoreapp3.0</TargetFrameworks>
+    <RootNamespace>System</RootNamespace>
+    <AssemblyName>Stringier.Rune</AssemblyName>
+    <Authors>.NET Foundation</Authors>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Copyright>2012</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<LangVersion>8.0</LangVersion>
+		<Nullable>enable</Nullable>
+		<Version>3.0.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Memory" Version="4.5.4" />
+  </ItemGroup>
+
+</Project>
