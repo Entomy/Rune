@@ -1,11 +1,11 @@
-﻿#if NETSTANDARD1_3
-using System.Text;
+﻿using System.Text;
 
 namespace System {
 	/// <summary>
 	/// Implements various <see cref="Rune"/> related methods that aren't directly part of <see cref="Rune"/>.
 	/// </summary>
 	public static class RuneExtensions {
+#if NETSTANDARD1_3
 		/// <summary>
 		/// Returns an enumeration of <see cref="Rune"/> from this string.
 		/// </summary>
@@ -29,6 +29,6 @@ namespace System {
 		/// Invalid sequences will be represented in the enumeration by <see cref="Rune.ReplacementChar"/>.
 		/// </remarks>
 		public static SpanRuneEnumerator EnumerateRunes(this Span<Char> span) => new SpanRuneEnumerator(span);
+#endif
 	}
 }
-#endif

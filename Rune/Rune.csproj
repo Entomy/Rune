@@ -12,10 +12,11 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<LangVersion>8.0</LangVersion>
 		<Nullable>enable</Nullable>
-		<Version>3.0.0</Version>
+		<Version>3.0.1</Version>
 		<PackageIcon>Logo.png</PackageIcon>
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<Description>Backports Rune to older runtimes</Description>
   </PropertyGroup>
 
 	<ItemGroup>
