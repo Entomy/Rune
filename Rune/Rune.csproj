@@ -6,14 +6,22 @@
     <AssemblyName>Stringier.Rune</AssemblyName>
     <Authors>.NET Foundation</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Copyright>2012</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<LangVersion>8.0</LangVersion>
 		<Nullable>enable</Nullable>
 		<Version>3.0.0</Version>
+		<PackageIcon>Logo.png</PackageIcon>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
+	<ItemGroup>
+		<None Include="..\Logo.png" Pack="true" Visible="true" PackagePath="\" />
+	</ItemGroup>
+	
   <ItemGroup>
     <PackageReference Include="System.Memory" Version="4.5.4" />
   </ItemGroup>
