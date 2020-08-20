@@ -2,7 +2,6 @@
 
 namespace System.Text.Tests {
 	public static class EnumeratorTests {
-#if !NETCOREAPP2_1
 		[Theory]
 		[InlineData("hello", new Int32[] { 0x68, 0x65, 0x6c, 0x6c, 0x6f })]
 		public static void String_Enumerator(String @string, Int32[] enumVals) {
@@ -12,9 +11,7 @@ namespace System.Text.Tests {
 			}
 			Assert.Equal(enumVals.Length, i);
 		}
-#endif
 
-#if !NETCOREAPP2_1
 		[Theory]
 		[InlineData("hello", new Int32[] { 0x68, 0x65, 0x6c, 0x6c, 0x6f })]
 		public static void Span_Enumerator(String @string, Int32[] enumVals) {
@@ -24,6 +21,5 @@ namespace System.Text.Tests {
 			}
 			Assert.Equal(enumVals.Length, i);
 		}
-#endif
 	}
 }
