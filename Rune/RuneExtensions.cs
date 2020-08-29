@@ -1,4 +1,8 @@
-﻿using System;
+﻿//NOTE: The contents of this file are not technically part of the backport, but are either required for its functioning, or so useful they are provided anyways. License should still be considered MIT, .NET Foundation. I'm not going to make a claim on any of this because it's all trivial code.
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using Defender;
@@ -62,6 +66,14 @@ namespace System.Text {
 #endif
 
 		/// <summary>
+		/// Returns an enumeration of <see cref="Rune"/> from the provided sequence.
+		/// </summary>
+		/// <remarks>
+		/// Invalid sequences will be represented in the enumeration by <see cref="Rune.ReplacementChar"/>.
+		/// </remarks>
+		public static SeqRuneEnumerator EnumerateRunes(this IEnumerable<Char> enumerable) => new SeqRuneEnumerator(enumerable);
+
+		/// <summary>
 		/// Gets the <see cref="Rune"/> which begins at index <paramref name="index"/> in string <paramref name="input"/>.
 		/// </summary>
 		/// <remarks>
@@ -97,15 +109,7 @@ namespace System.Text {
 		/// <remarks>
 		/// Throws if <paramref name="index"/> is out of range, or if <paramref name="index"/> does not reference the start of a valid scalar value within <paramref name="input"/>.
 		/// </remarks>
-		public static Rune GetRuneAt(this ReadOnlySpan<Char> input, Int32 index) {
-			Guard.Index(index, nameof(index), input);
-			Char high = input[index++];
-			if (Char.IsHighSurrogate(high)) {
-				Char low = input[index];
-				return new Rune(high, low);
-			}
-			return new Rune(high);
-		}
+		public static Rune GetRuneAt(this ReadOnlySpan<Char> input, Int32 index) => GetRuneAt(input, index, out _);
 
 		/// <summary>
 		/// Gets the <see cref="Rune"/> which begins at index <paramref name="index"/> in string <paramref name="input"/>.
@@ -149,7 +153,11 @@ namespace System.Text {
 			Char high = input[newIndex++];
 			if (Char.IsHighSurrogate(high)) {
 				Char low = input[newIndex++];
-				return new Rune(high, low);
+				if (Char.IsLowSurrogate(low)) {
+					return new Rune(high, low);
+				} else {
+					return Rune.ReplacementChar;
+				}
 			}
 			return new Rune(high);
 		}
